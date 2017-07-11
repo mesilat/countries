@@ -1,0 +1,24 @@
+{namespace Mesilat.Countries.Templates}
+
+/**
+* Country Template
+* @param code
+* @param name
+*/
+{template .country}
+<span>
+<img src="{contextPath()}/download/resources/com.mesilat.countries/images/{$code}.png" title="{$name}"></img>&nbsp;{$name}
+</span>
+{/template}
+
+
+/**
+* Country Symbol Template
+* @param code
+* @param name
+*/
+{template .countrySymbol}
+<span>
+<img src="{contextPath()}/download/resources/com.mesilat.countries/images/{$code}.png" title="{$name}"></img>
+</span>
+{/template}
