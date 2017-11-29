@@ -13,6 +13,7 @@ import javax.inject.Inject;
 @Scanned
 public class CountrySymbolMacro implements Macro {
     private final TemplateRenderer renderer;
+    private final CountriesService service;
 
     @Override
     public BodyType getBodyType() {
@@ -29,14 +30,18 @@ public class CountrySymbolMacro implements Macro {
         } else {
             Map<String,Object> map = new HashMap<>();
             map.put("code", params.get("code"));
-            map.put("name", CountriesImpl.getInstance().getName(params.get("code").toString()));
+            map.put("name", service.getName(params.get("code").toString()));
             return renderFromSoy("Mesilat.Countries.Templates.countrySymbol.soy", map);
         }
     }
 
     @Inject
-    public CountrySymbolMacro(final @ComponentImport TemplateRenderer renderer){
+    public CountrySymbolMacro(
+        final @ComponentImport TemplateRenderer renderer,
+        final CountriesService service            
+    ){
         this.renderer = renderer;
+        this.service = service;
     }
 
     public String renderFromSoy(String soyTemplate, Map soyContext) {

@@ -1,0 +1,21 @@
+{
+    getUrl: function(val) {
+        if (val) {
+            return AJS.contextPath() + '/rest/countries/1.0/find';
+        } else {
+            return null;
+        }
+    },
+    getParams: function(autoCompleteControl, val){
+        var params = {
+            'max-results': 10
+        };
+        if (val) {
+            params.filter = Confluence.unescapeEntities(val);
+        }
+        return params;
+    },
+    update: function(autoCompleteControl, link){
+        require('com.mesilat/autocomplete:countries').updateCountry(autoCompleteControl, link);
+    }
+}

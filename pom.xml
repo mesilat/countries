@@ -7,9 +7,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mesilat</groupId>
     <artifactId>countries</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.4</version>
 
-    <!-- Build 1000002 -->
+    <!-- Build 1000006 -->
 
     <organization>
         <name>Mesilat Limited</name>
@@ -84,6 +84,7 @@
 
                         <!-- Add package to export here -->
                         <Export-Package>
+                            com.mesilat.countries,
                         </Export-Package>
 
                         <!-- Add package import here -->

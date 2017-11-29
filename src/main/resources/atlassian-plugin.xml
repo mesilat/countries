@@ -5,6 +5,7 @@
         <vendor name="${project.organization.name}" url="${project.organization.url}" />
         <param name="plugin-icon">images/pluginIcon.png</param>
         <param name="plugin-logo">images/pluginLogo.png</param>
+        <param name="atlassian-data-center-compatible">true</param>
     </plugin-info>
 
     <resource type="i18n"     name="i18n"    location="/i18n/countries"/>
@@ -26,8 +27,6 @@
     </web-resource>
 
     <web-resource key="editor-resources" name="Editor Resources">
-        <resource type="download" name="placeholders.js"  location="/js/placeholders.js"/>
-        <resource type="download" name="autocomplete.js"  location="/js/autocomplete.js"/>
         <resource type="download" name="base64.js"        location="/js/base64.js"/>
         <resource type="download" name="countries.js"     location="/js/countries.js"/>
 
@@ -40,18 +39,27 @@
 ﻿   <xhtml-macro name="country" class="com.mesilat.countries.CountryMacro" key="country" state="enabled"
         icon="/download/resources/com.mesilat.countries/images/pluginLogo.png">
 ﻿       <category name="confluence-content"/>
-        <description>Country symbol and title</description>
+        <description key="com.mesilat.countries.country.desc"></description>
         <parameters>
             <parameter name="code" type="string"/>
         </parameters>
     </xhtml-macro>
+    <macro name="country" key="country-legacy" class="com.mesilat.countries.CountryMacroLegacy" state="enabled">
+        <description key="com.mesilat.countries.country.desc"></description>
+﻿       <category name="confluence-content"/>
+    </macro>
 
 ﻿   <xhtml-macro name="country-symbol" class="com.mesilat.countries.CountrySymbolMacro" key="country-symbol" state="enabled"
         icon="/download/resources/com.mesilat.countries/images/pluginLogo.png">
 ﻿       <category name="confluence-content"/>
-        <description>Country symbol</description>
+        <description key="com.mesilat.countries.country-symbol.desc"></description>
         <parameters>
             <parameter name="code" type="string"/>
         </parameters>
     </xhtml-macro>
+﻿   <macro name="country-symbol" class="com.mesilat.countries.CountrySymbolMacroLegacy" key="country-symbol-legacy" state="enabled"
+        icon="/download/resources/com.mesilat.countries/images/pluginLogo.png">
+﻿       <category name="confluence-content"/>
+        <description key="com.mesilat.countries.country-symbol.desc"></description>
+    </macro>
 </atlassian-plugin>

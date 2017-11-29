@@ -7,7 +7,6 @@ import com.atlassian.plugins.rest.common.security.AnonymousAllowed;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Map;
-import java.util.Map.Entry;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -25,6 +24,7 @@ import org.slf4j.LoggerFactory;
 @Path("/")
 public class CountriesResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(CountriesResource.class);
+    private final CountriesService service;
     private final String baseUrl;
 
     @AnonymousAllowed
@@ -39,7 +39,7 @@ public class CountriesResource {
         ObjectMapper mapper = new ObjectMapper();
         StringWriter sw = new StringWriter();
         try {
-            Map<String,String> countries = CountriesImpl.getInstance().find(filter);
+            Map<String,String> countries = service.find(filter);
             ObjectNode root = mapper.createObjectNode();
 
             ArrayNode result = mapper.createArrayNode();
@@ -90,7 +90,11 @@ public class CountriesResource {
     }
 
     @Inject
-    public CountriesResource(final @ComponentImport SettingsManager settingsManager){
+    public CountriesResource(
+        final @ComponentImport SettingsManager settingsManager,
+        final CountriesService service
+    ){
         baseUrl = settingsManager.getGlobalSettings().getBaseUrl();
+        this.service = service;
     }
 }
