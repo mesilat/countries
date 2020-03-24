@@ -1,0 +1,10 @@
+span[data-macro-name="country"] {
+    position: relative;
+    padding-left: 24px;
+}
+
+span[data-macro-name="country"] img {
+    position: absolute;
+    left: 0;
+    width: 24px;
+}
